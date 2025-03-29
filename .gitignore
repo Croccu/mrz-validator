@@ -1,17 +1,30 @@
-# Node.js
-frontend/node_modules/
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.env
+*.venv
+.env
+venv/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# React build output
 frontend/build/
 
-# Python
-backend/venv/
-__pycache__/
-*.pyc
-
-# VSCode
-.vscode/
-
-# Mac system files
+# macOS
 .DS_Store
 
-# Logs
+# IDEs and editors
+.vscode/
+.idea/
+
+# Heroku/Python build artifacts
 *.log
+.python-version
