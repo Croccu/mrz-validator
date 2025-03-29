@@ -4,20 +4,31 @@ from flask_limiter.util import get_remote_address
 from flask_cors import CORS
 from mrz_validator import validate_mrz
 import os
+import redis
 
 
-app = Flask(__name__, static_folder='../frontend/build', static_url_path='')
+app = Flask(__name__, static_folder="build", static_url_path="")
 
-REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379")
+redis_url = os.getenv("REDIS_URL")
+if redis_url:
+    redis_connection = redis.Redis.from_url(redis_url, ssl_cert_reqs=None)
+    storage_uri = redis_url
+else:
+    redis_connection = None
+    storage_uri = "memory://"
 
 limiter = Limiter(
-    get_remote_address,
     app=app,
-    storage_uri=REDIS_URL,
-    default_limits=["15 per minute"]  # Adjust as needed
+    key_func=get_remote_address,
+    storage_uri=storage_uri,
 )
 
 CORS(app, resources={r"/validate": {"origins": ["http://localhost:3000"]}})
+
+@app.route("/api")
+def index():
+    return "MRZ Validator API is running ✅"
+
 
 @app.route("/validate", methods=["POST"])
 @limiter.limit("6 per minute")
@@ -31,14 +42,16 @@ def validate():
     except Exception as e:
         return jsonify({"error": f"Validation failed: {str(e)}"}), 400
 
-@app.route('/')
-def serve():
-    return send_from_directory(app.static_folder, 'index.html')
 
-@app.route('/<path:path>')
-def serve_static(path):
-    return send_from_directory(app.static_folder, path)
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def serve_frontend(path):
+    if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, "index.html")
 
+@app.errorhandler(Exception)
 def handle_exception(e):
     return jsonify({"error": str(e)}), 500
 
