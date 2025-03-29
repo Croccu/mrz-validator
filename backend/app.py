@@ -8,9 +8,12 @@ import os
 
 app = Flask(__name__, static_folder='../frontend/build', static_url_path='')
 
+REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379")
+
 limiter = Limiter(
     get_remote_address,
     app=app,
+    storage_uri=REDIS_URL,
     default_limits=["15 per minute"]  # Adjust as needed
 )
 
