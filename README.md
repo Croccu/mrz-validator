@@ -1,3 +1,3 @@
 # MRZ Validator
 
-Run Flask + React to validate passport MRZs.
+Flask + React webapp to validate passport MRZs.
