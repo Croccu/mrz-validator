@@ -39,9 +39,9 @@ export default function App() {
         onChange={(e) => setMrz1(e.target.value.toUpperCase())}
         maxLength={44}
       />
-      <div>
-        <button onClick={() => padTo44(setMrz1, mrz1)}>Pad to 44</button>
-        <button onClick={() => resetField(setMrz1)}>Reset</button>
+      <div className="button-container">
+        <button className="button-30" onClick={() => padTo44(setMrz1, mrz1)}>Pad to 44</button>
+        <button className="button-30" onClick={() => resetField(setMrz1)}>Reset</button>
       </div>
 
       <input
@@ -50,15 +50,18 @@ export default function App() {
         onChange={(e) => setMrz2(e.target.value.toUpperCase())}
         maxLength={44}
       />
-      <div>
-        <button onClick={() => padTo44(setMrz2, mrz2)}>Pad to 44</button>
-        <button onClick={() => resetField(setMrz2)}>Reset</button>
+      <div className="button-container">
+        <button className="button-30" onClick={() => padTo44(setMrz2, mrz2)}>Pad to 44</button>
+        <button className="button-30" onClick={() => resetField(setMrz2)}>Reset</button>
       </div>
 
-      <button onClick={validate} style={{ marginTop: "1rem" }}>
-        Validate
-      </button>
+      <div className="button-container">
+        <button className="button-30" id="button-validate" role="button" onClick={validate}>
+          Validate
+        </button>
+      </div>
 
+      {/* This is now correctly inside the .app container */}
       {result && (
         <div className="results">
           <h3>Validation Results:</h3>

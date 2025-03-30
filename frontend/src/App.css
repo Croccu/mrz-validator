@@ -1,70 +1,90 @@
-.app {
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #191818;
+  color: #f0f0f0;
   font-family: sans-serif;
+}
+
+.app {
   max-width: 600px;
   margin: 2rem auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
   text-align: center;
 }
 
-.app-header {
-  background-color: #2f2f2f;
-  color: white;
+.app-header,
+.results {
+  background-color: #2a2a2a;
   padding: 1rem;
   border-radius: 8px;
   margin-bottom: 2rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 input {
-  width: 100%;
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+  border: 1px solid #444;
+  border-radius: 6px;
+  width: 96%;
+  max-width: 580px;
   margin: 0.5rem 0;
   padding: 0.5rem;
   font-size: 1rem;
 }
 
-/* CSS */
-button {
-  background-color: #FFFFFF;
-  border: 1px solid #222222;
-  border-radius: 8px;
-  box-sizing: border-box;
-  color: #222222;
+.button-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.button-30 {
+  background-color: #757575;
+  color: #f0f0f0;
+  border-radius: 4px;
+  border: none;
+  box-shadow: rgba(117, 117, 117, 0.4) 0 2px 4px,
+              rgba(117, 117, 117, 0.3) 0 7px 13px -3px,
+              #606060 0 -3px 0 inset;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 18px;
+  padding: 0 16px;
+  height: 48px;
   cursor: pointer;
-  display: inline-block;
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 20px;
-  margin: 10px;
-  outline: none;
-  padding:13px 23px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  touch-action: manipulation;
-  transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
-  user-select: none;
-  -webkit-user-select: none;
-  width: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow .15s, transform .15s;
+  margin: 0.5rem;
 }
 
-button:focus-visible {
-  box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
-  transition: box-shadow .2s;
+#button-validate {
+  color: #5cd560;
 }
 
-button:active {
-  background-color: #F7F7F7;
-  border-color: #000000;
-  transform: scale(.96);
+.button-30:hover {
+  box-shadow: rgba(117, 117, 117, 0.4) 0 4px 8px,
+              rgba(117, 117, 117, 0.3) 0 7px 13px -3px,
+              #606060 0 -3px 0 inset;
+  transform: translateY(-2px);
 }
 
-button:disabled {
-  border-color: #DDDDDD;
-  color: #DDDDDD;
-  cursor: not-allowed;
-  opacity: 1;
+.button-30:active {
+  box-shadow: #606060 0 3px 7px inset;
+  transform: translateY(2px);
 }
 
 .results {
+  background-color: #1e1e1e;
+  border: 1px solid #444;
+  padding: 1rem;
+  border-radius: 6px;
   margin-top: 2rem;
   text-align: left;
 }
