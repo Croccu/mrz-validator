@@ -14,3 +14,5 @@ flask run &
 echo "Starting frontend..."
 cd ../frontend
 npm start
+
+#run with: ./scripts/run-local.sh

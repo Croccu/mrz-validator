@@ -16,3 +16,5 @@ git add .
 git commit -m "Automated deploy: update frontend build"
 git push heroku master
 echo "Deployment complete!"
+
+#deploy with: ./scripts/deploy.sh
