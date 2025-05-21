@@ -15,7 +15,6 @@ NB! Please note that this is currently only for passport MRZ validation, not ID'
 - Simple React frontend
 - Flask API backend with rate limiting via Redis
 - Deployed on Heroku
-- CORS-restricted to allow safe API access
 
 ## Stack
 
